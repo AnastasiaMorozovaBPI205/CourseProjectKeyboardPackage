@@ -109,11 +109,12 @@ public final class RotatableDialKeyboard: UIView {
             rotatingLayer.center.y - touch.location(in: self).y,
             rotatingLayer.center.x - touch.location(in: self).x
         )
-        
-        rotatingLayer.transform = CGAffineTransform(rotationAngle: rotationAngle)
-        
-        rotatingLayer.buttons.forEach { button in
-            button.transform = CGAffineTransform(rotationAngle: -rotationAngle)
+        UIView.animate(withDuration: 2) {
+            rotatingLayer.transform = CGAffineTransform(rotationAngle: rotationAngle)
+            
+            rotatingLayer.buttons.forEach { button in
+                button.transform = CGAffineTransform(rotationAngle: -rotationAngle)
+            }
         }
     }
     
